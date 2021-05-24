@@ -12,7 +12,7 @@
 #X text 171 39 The arguments (1 and 5 in the example) are the initial
 values of "base" and "size". They default to zero \, which results
 in no ouput. "base" can be changed by inputing an integer to the leftmost
-input. "size" can be changed on the rightmost input. A reset nessage
+input. "size" can be changed on the middle input. A reset nessage
 to the leftmost input restores the initial values of "base" and "size".
 ;
 #X obj 109 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -20,7 +20,7 @@ to the leftmost input restores the initial values of "base" and "size".
 #X text 107 103 slow;
 #X text 171 122 A bang to the leftmost input causes a sequence of integers
 of size "size" to be output rapid fire \, starting with "base". If
-"count" is negative \, it is set to 0;
+"size" is negative \, it is set to 0;
 #X text 171 209 Changing any of the inputs causes the sequence to reset.
 ;
 #X text 171 173 The "slow" toggle causes the sequence to be output
