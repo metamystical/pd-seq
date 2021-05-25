@@ -3,7 +3,7 @@ Accessory for [[purdie ] object](https://github.com/metamystical/pd-purdie) for 
 
 ### Description
 
-[seq ] ouputs a consecutive sequence of integers of size "size" beginning with "base" in rapid succession, unless the **slow** toggle is on. 
+[seq ] ouputs a consecutive sequence of integers of size **size** beginning with **base** in rapid succession, unless the **slow** toggle is on. 
 
 Inputs are described in the following table:
 
