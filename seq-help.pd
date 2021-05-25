@@ -20,7 +20,7 @@ to the leftmost input restores the initial values of "base" and "size".
 #X text 107 103 slow;
 #X text 171 122 A bang to the leftmost input causes a sequence of integers
 of size "size" to be output rapid fire \, starting with "base". If
-"size" is negative \, it is set to 0;
+"size" is negative \, the sequence is decreasing;
 #X text 171 209 Changing any of the inputs causes the sequence to reset.
 ;
 #X text 171 173 The "slow" toggle causes the sequence to be output
