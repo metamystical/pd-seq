@@ -16,12 +16,23 @@ typedef struct seq {
 } t_seq;
 
 void seq_bang (t_seq *x) {
-  if (x->slow == 0) {
-    for (int i = 0; i < x->size; i++) outlet_float(x->out, (float)(x->base + i));
-  }  
-  else {
-    outlet_float(x->out, (float)(x->base + x->index));
-    if (++x->index == x->size) x->index = 0;
+  if (x->size > 0) {
+    if (x->slow == 0) {
+      for (int i = 0; i < x->size; i++) outlet_float(x->out, (float)(x->base + i));
+    }
+    else {
+      outlet_float(x->out, (float)(x->base + x->index));
+      if (++x->index == x->size) x->index = 0;
+    }
+  }
+  else if (x->size < 0) {
+    if (x->slow == 0) {
+      for (int i = 0; i > x->size; i--) outlet_float(x->out, (float)(x->base + i));
+    }
+    else {
+      outlet_float(x->out, (float)(x->base + x->index));
+      if (--x->index == x->size) x->index = 0;
+    }
   }
 }
 
@@ -36,16 +47,8 @@ void seq_base (t_seq *x, t_floatarg f) {
   x->index = 0;
 }
 
-void seq_checkSize (t_seq *x) {
-  if (x->size < 0) {
-    x->size = 0;
-    error("[seq ]: size < 0; setting to 0");
-  }
-}
-
 void seq_size (t_seq *x, t_floatarg f) {
   x->size = (int)f;
-  seq_checkSize(x);
   x->index = 0;
 }
 
@@ -65,7 +68,6 @@ void *seq_new (t_floatarg base, t_floatarg size) {
   x->default_base = (int)base;
   x->default_size = (int)size;
   seq_reset(x);
-  seq_checkSize(x);
   return (void *)x;
 }
 
