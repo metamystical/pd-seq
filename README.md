@@ -7,8 +7,8 @@ Accessory for [[purdie ] object](https://github.com/metamystical/pd-purdie) for 
 
 Inputs are described in the following table:
 
-| Label    | Input | Type    | Action                                                                                                                                 |
-|----------|---------|---------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Selector     | Input   | Type     | Action                                                                  |
+|--------------|---------|----------|-------------------------------------------------------------------------|
 | **bang**     | 0       | active   | output the full integer sequence rapid fire, unless **slow** is toggled |
 | **reset**    | 0       | passive  | restore the initial values of **base** and **size** |
 | **base**     | 0       | passive  | set the starting integer |
