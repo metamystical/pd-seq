@@ -12,7 +12,7 @@ Inputs are described in the following table:
 | **bang**     | 0       | active   | output the full integer sequence rapid fire, unless **slow** is toggled |
 | **reset**    | 0       | passive  | restore the initial values of **base** and **size** |
 | **base**     | 0       | passive  | set the starting integer |
-| **size**     | 1       | passive  | set the size of the series |
+| **size**     | 1       | passive  | set the size of the series; if negative, sequence is decreasing |
 | **slow**     | 2       | passive  | when toggled, output the series one bang at a time instead of rapid fire |
 
 note: the initial values of **base** and **size** can be specified within the object box itself [seq base size ]. Defaults are zero.
