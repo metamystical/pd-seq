@@ -17,7 +17,7 @@ Inputs are described in the following table:
 
 note: the initial values of **base** and **size** can be specified within the object box itself [seq base size ]. Defaults are zero.
 
-note: changing any of the inputs (besides **bang**) causes the sequence to reset.
+note: changing any of the inputs (besides **bang**) causes the sequence to restart from **base**.
 
 ### Installation
 
