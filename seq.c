@@ -4,8 +4,8 @@ t_class *seq_class;
 
 typedef struct seq {
   t_object x_obj;
+  t_inlet *in_base;
   t_inlet *in_size;
-  t_inlet *in_slow;
   t_outlet *out;
   int default_base;
   int default_size;
@@ -60,8 +60,8 @@ void seq_slow (t_seq *x, t_floatarg f) {
 void *seq_new (t_floatarg base, t_floatarg size) {
   t_seq *x = (t_seq *)pd_new(seq_class);
   // leftmost inlet automatically created (and freed)
+  x->in_base = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("base"));
   x->in_size = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("size"));
-  x->in_slow = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("slow"));
   x->out = outlet_new(&x->x_obj, &s_float);
   x->slow = 0;
   x->index = 0;
@@ -72,8 +72,8 @@ void *seq_new (t_floatarg base, t_floatarg size) {
 }
 
 void seq_free(t_seq *x) {
+  inlet_free(x->in_base);
   inlet_free(x->in_size);
-  inlet_free(x->in_slow);
   outlet_free(x->out);
 }
 
@@ -81,9 +81,9 @@ void seq_setup(void) {
   seq_class = class_new(gensym("seq"), (t_newmethod)seq_new, (t_method)seq_free,
     sizeof(t_seq), CLASS_DEFAULT, A_DEFFLOAT, A_DEFFLOAT, 0);
   class_addbang(seq_class, (t_method)seq_bang);
-  class_addfloat(seq_class, (t_method)seq_base);
+  class_addfloat(seq_class, (t_method)seq_slow);
+  class_addmethod(seq_class, (t_method)seq_slow, gensym("slow"), A_DEFFLOAT, 0);
   class_addmethod(seq_class, (t_method)seq_reset, gensym("reset"), 0);
   class_addmethod(seq_class, (t_method)seq_base, gensym("base"), A_DEFFLOAT, 0);
   class_addmethod(seq_class, (t_method)seq_size, gensym("size"), A_DEFFLOAT, 0);
-  class_addmethod(seq_class, (t_method)seq_slow, gensym("slow"), A_DEFFLOAT, 0);
 }
