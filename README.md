@@ -10,7 +10,7 @@ Inputs are described in the following table:
 | Selector     | Input   | Type     | Action                                                                  |
 |--------------|---------|----------|-------------------------------------------------------------------------|
 | **bang**     | 0       | active   | output the full integer sequence rapid fire, unless **slow** is toggled |
-| **reset**    | 0       | passive  | restore the initial values of **base** and **size** |
+| **reset**    | 0       | passive  | message to restore the initial values of **base** and **size** |
 | **base**     | 0       | passive  | set the starting integer |
 | **size**     | 1       | passive  | set the size of the series; if negative, sequence is decreasing |
 | **slow**     | 2       | passive  | when toggled, output the series one bang at a time instead of rapid fire |
