@@ -81,6 +81,7 @@ void seq_setup(void) {
   class_addbang(seq_class, (t_method)seq_bang);
   class_addfloat(seq_class, (t_method)seq_base);
   class_addmethod(seq_class, (t_method)seq_reset, gensym("reset"), 0);
+  class_addmethod(seq_class, (t_method)seq_base, gensym("base"), A_DEFFLOAT, 0);
   class_addmethod(seq_class, (t_method)seq_size, gensym("size"), A_DEFFLOAT, 0);
   class_addmethod(seq_class, (t_method)seq_slow, gensym("slow"), A_DEFFLOAT, 0);
 }
