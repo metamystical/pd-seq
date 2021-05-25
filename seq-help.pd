@@ -4,7 +4,6 @@
 #X msg 107 37 -2;
 #X obj 37 145 seq 1 5;
 #X text 171 18 Seq - ouput a consecutive sequence of integers.;
-#X msg 108 79 2;
 #X obj 37 190 print;
 #X text 104 17 base;
 #X text 105 59 size;
@@ -12,22 +11,23 @@
 #X text 171 39 The arguments (1 and 5 in the example) are the initial
 values of "base" and "size". They default to zero \, which results
 in no ouput. "base" can be changed by inputing an integer to the leftmost
-input. "size" can be changed on the middle input. A reset nessage
-to the leftmost input restores the initial values of "base" and "size".
+input. "size" can be changed on the middle input. A reset nessage to
+the leftmost input restores the initial values of "base" and "size".
 ;
 #X obj 109 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 107 103 slow;
-#X text 171 122 A bang to the leftmost input causes a sequence of integers
-of size "size" to be output rapid fire \, starting with "base". If
-"size" is negative \, the sequence is decreasing;
 #X text 171 209 Changing any of the inputs causes the sequence to reset.
 ;
 #X text 171 173 The "slow" toggle causes the sequence to be output
 one bang at a time instead of rapid fire.;
+#X text 171 122 A bang to the leftmost input causes a sequence of integers
+of size "size" to be output rapid fire \, starting with "base". If
+"size" is negative \, the sequence is decreasing.;
+#X msg 108 79 -5;
 #X connect 0 0 2 0;
 #X connect 1 0 2 0;
-#X connect 2 0 5 0;
-#X connect 4 0 2 1;
-#X connect 8 0 2 0;
-#X connect 10 0 2 2;
+#X connect 2 0 4 0;
+#X connect 7 0 2 0;
+#X connect 9 0 2 2;
+#X connect 14 0 2 1;
