@@ -7,7 +7,7 @@ Accessory for [[purdie ] object](https://github.com/metamystical/pd-purdie) for 
 
 Inputs are described in the following table. All selectors can be sent as messages to the left input with arguments as specified:
 
-| Selector     | Input   | Message argument | Action                                                                  |
+| Selector     | Input   | Message argument | Effect                                                          |
 |--------------|---------|----------|-------------------------------------------------------------------------|
 | **bang**     | left    | none   | output the full integer sequence rapid fire, unless **slow** is toggled |
 | **reset**    | left    | none   | message to restore the initial values of **base** and **size** |
