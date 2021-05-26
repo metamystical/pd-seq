@@ -11,13 +11,13 @@ typedef struct seq {
   int default_size;
   int base;
   int size;
-  int slow;
+  int fast;
   int index;
 } t_seq;
 
 void seq_bang (t_seq *x) {
   if (x->size > 0) {
-    if (x->slow == 0) {
+    if (x->fast != 0) {
       for (int i = 0; i < x->size; i++) outlet_float(x->out, (float)(x->base + i));
     }
     else {
@@ -26,7 +26,7 @@ void seq_bang (t_seq *x) {
     }
   }
   else if (x->size < 0) {
-    if (x->slow == 0) {
+    if (x->fast != 0) {
       for (int i = 0; i > x->size; i--) outlet_float(x->out, (float)(x->base + i));
     }
     else {
@@ -52,8 +52,8 @@ void seq_size (t_seq *x, t_floatarg f) {
   x->index = 0;
 }
 
-void seq_slow (t_seq *x, t_floatarg f) {
-  x->slow = (int)f;
+void seq_fast (t_seq *x, t_floatarg f) {
+  x->fast = (int)f;
   x->index = 0;
 }
 
@@ -63,7 +63,7 @@ void *seq_new (t_floatarg base, t_floatarg size) {
   x->in_base = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("base"));
   x->in_size = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("size"));
   x->out = outlet_new(&x->x_obj, &s_float);
-  x->slow = 0;
+  x->fast = 0;
   x->index = 0;
   x->default_base = (int)base;
   x->default_size = (int)size;
@@ -81,8 +81,8 @@ void seq_setup(void) {
   seq_class = class_new(gensym("seq"), (t_newmethod)seq_new, (t_method)seq_free,
     sizeof(t_seq), CLASS_DEFAULT, A_DEFFLOAT, A_DEFFLOAT, 0);
   class_addbang(seq_class, (t_method)seq_bang);
-  class_addfloat(seq_class, (t_method)seq_slow);
-  class_addmethod(seq_class, (t_method)seq_slow, gensym("slow"), A_DEFFLOAT, 0);
+  class_addfloat(seq_class, (t_method)seq_fast);
+  class_addmethod(seq_class, (t_method)seq_fast, gensym("fast"), A_DEFFLOAT, 0);
   class_addmethod(seq_class, (t_method)seq_reset, gensym("reset"), 0);
   class_addmethod(seq_class, (t_method)seq_base, gensym("base"), A_DEFFLOAT, 0);
   class_addmethod(seq_class, (t_method)seq_size, gensym("size"), A_DEFFLOAT, 0);
