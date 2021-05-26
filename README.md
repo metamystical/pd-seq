@@ -3,21 +3,21 @@ Accessory for [[purdie ] object](https://github.com/metamystical/pd-purdie) for 
 
 ### Description
 
-[seq ] ouputs a consecutive sequence of integers of size **size** beginning with **base** in rapid succession, unless the **slow** toggle is on. 
+[seq ] ouputs a consecutive sequence of integers of size **size** beginning with **base**. 
 
-Inputs are described in the following table:
+Inputs are described in the following table. All selectors can be sent as messages to the left input with arguments as specified:
 
-| Selector     | Input   | Type     | Action                                                                  |
+| Selector     | Input   | Message argument | Action                                                                  |
 |--------------|---------|----------|-------------------------------------------------------------------------|
-| **bang**     | 0       | active   | output the full integer sequence rapid fire, unless **slow** is toggled |
-| **reset**    | 0       | passive  | message to restore the initial values of **base** and **size** |
-| **slow**     | 0       | passive  | when toggled, output the series one bang at a time instead of rapid fire |
-| **base**     | 1       | passive  | set the starting integer |
-| **size**     | 2       | passive  | set the size of the series; if negative, sequence is decreasing |
+| **bang**     | left    | none   | output the full integer sequence rapid fire, unless **slow** is toggled |
+| **reset**    | left    | none   | message to restore the initial values of **base** and **size** |
+| **fast**     | left    | float (0 or 1) | when toggled, output the series rapid-fire instead of one bang at a time |
+| **base**     | middle  | float (truncated to integer)  | set the starting integer |
+| **size**     | right   | float (truncated to integer)  | set the size of the series; if negative, sequence is decreasing |
 
-note: the initial values of **base** and **size** can be specified within the object box itself [seq base size ]. Defaults are zero.
+Note: the initial values of **base** and **size** can be specified within the object box itself [seq base size ]. Defaults are zero.
 
-note: changing any of the inputs (besides **bang**) causes the sequence to restart from **base**.
+Note: changing any of the inputs (besides **bang**) causes the sequence to restart from **base**.
 
 ### Installation
 
