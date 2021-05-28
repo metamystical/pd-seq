@@ -7,13 +7,13 @@ Accessory for [[purdie ] object](https://github.com/metamystical/pd-purdie) for 
 
 Inputs are described in the following table. All selectors can be sent as messages to the left input with arguments as specified:
 
-| Selector     | Input   | Message argument | Effect                                                          |
-|--------------|---------|----------|-------------------------------------------------------------------------|
-| **bang**     | left    | none   | output the full integer sequence |
-| **reset**    | left    | none   | message to restore the initial values of **base** and **size** |
-| **fast**     | left    | float (0 or 1) | when toggled, output the series rapid-fire instead of one bang at a time |
-| **base**     | middle  | float (truncated to integer)  | set the starting integer |
-| **size**     | right   | float (truncated to integer)  | set the size of the series; if negative, sequence is decreasing |
+| Selector     | Input   | Message argument | Effect |
+|--------------|---------|------------------|--------|
+| **bang**     | left    | none             | Output the full integer sequence. |
+| **reset**    | left    | none             | Message to restore the initial values of **base** and **size**. |
+| **fast**     | left    | float (0 or 1)   | When toggled, output the series rapid-fire instead of one bang at a time. |
+| **base**     | middle  | float (truncated to integer)  | Set the starting integer. |
+| **size**     | right   | float (truncated to integer)  | Set the size of the series; if negative, sequence is decreasing. |
 
 Note: the initial values of **base** and **size** can be specified within the object box itself [seq base size ]. Defaults are zero.
 
