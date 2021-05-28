@@ -9,7 +9,7 @@ Inputs are described in the following table. All selectors can be sent as messag
 
 | Selector     | Input   | Message argument | Effect                                                          |
 |--------------|---------|----------|-------------------------------------------------------------------------|
-| **bang**     | left    | none   | output the full integer sequence rapid fire, unless **slow** is toggled |
+| **bang**     | left    | none   | output the full integer sequence |
 | **reset**    | left    | none   | message to restore the initial values of **base** and **size** |
 | **fast**     | left    | float (0 or 1) | when toggled, output the series rapid-fire instead of one bang at a time |
 | **base**     | middle  | float (truncated to integer)  | set the starting integer |
